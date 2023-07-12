@@ -1,0 +1,70 @@
+<mat-toolbar class="mat-elevation-z8">
+    <button  
+      mat-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    > 
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>    
+    <span class = "diary">My Diary</span>
+    <mat-toolbar>
+        <span class="example-spacer"></span>
+        <mat-form-field class="cal-form">
+          <input class="cal-input" matInput [matDatepicker]="dp"  [formControl]="date">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp
+                          startView="multi-year" 
+                          (yearSelected)="chosenYearHandler($event)"
+                          (monthSelected)="chosenMonthHandler($event, dp)"
+                          panelClass="example-month-picker">
+          </mat-datepicker>
+        </mat-form-field>
+      </mat-toolbar>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <img
+        class="avatar mat-elevation-z8"
+        src="/assets/images/profile.png" alt="image"/>
+  
+      <h4 class="name">Gowsalya</h4>
+      <p class="designation">Software Engineer</p>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="menu-button" routerLink="/spend-details" 
+      routerLinkActive="active">
+        <mat-icon>add_shopping_cart</mat-icon>
+        <span class = "text">Spend</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/invest-details"
+      routerLinkActive="active">
+        <mat-icon>account_balance</mat-icon>
+        <span class = "text">Invest</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/balance-details"
+      routerLinkActive="active">
+        <mat-icon>account_balance_wallet</mat-icon>
+        <span class = "text">Balance</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/change-pass"
+      routerLinkActive="active">
+        <mat-icon>lock_open</mat-icon>
+        <span class = "text">Change Password</span>
+      </button>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="menu-button" routerLink="/help">
+        <mat-icon>lock</mat-icon>
+        <span class = "text">Logout</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

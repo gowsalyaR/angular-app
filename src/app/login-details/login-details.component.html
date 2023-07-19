@@ -1,12 +1,36 @@
-<div class="login-container">
-    <h2>Login</h2>
-    <form (ngSubmit)="onSubmit()">
-      <mat-form-field>
-        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
-      </mat-form-field>
-      <button mat-raised-button color="primary"  type="submit" >Login</button>
-    </form>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form>
+                    <h2>Login</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="name" required>
+                        <label for="">UserName or Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" required>
+                        <label for="">Password</label>
+                    </div>
+                    <div class="login" >
+                        <button  routerLink="/main-details">LogIn</button>
+                    </div>
+                    <div class="forget" >
+                        <button>Forgot Password</button>
+                    </div>
+                    <div class="signin">
+                        <p>Don't have a account
+                            <a routerLink="/signin-details">SignIn</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
